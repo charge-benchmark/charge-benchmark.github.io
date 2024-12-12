@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="A Benchmark and Dataset for Dynamic Novel View Synthesis.">
+  <meta name="keywords" content="Gaussian Splatting, dataset">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charge: A Comprehensive Benchmark and Dataset for Dynamic Novel View Synthesis</title>
+
+  <link rel="stylesheet" href="static/css/bootstrap-4.4.1.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="icon" href="assets/other/flash.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/video_comparison.js"></script>
+  <script src="static/js/event_handler.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://michaal94.github.io" target="_blank">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://arxiv.org/abs/2409.15041" target="_blank">
+            Sparse Neural Rendering Challenge
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/abs/2312.13308v2" target="_blank">
+            SWinGS
+          </a>
+          <a class="navbar-item" href="https://sib1.github.io/projects/roguenerf/" target="_blank">
+            RoGUENeRF
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/abs/2312.02902" target="_blank">
+            HeadGaS
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/abs/2311.17113" target="_blank">
+            HuGS
+          </a>
+          
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Charge: A Comprehensive Benchmark and Dataset for Dynamic Novel View Synthesis</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://michaal94.github.io" target="_blank">Michal Nazarczuk</a>,</span>
+            <span class="author-block">
+              <a href="https://thomas-tanay.github.io/" target="_blank">Thomas Tanay</a>,</span>
+            <span class="author-block">
+              <a href="https://zhangzhensong.github.io/" target="_blank">Zhensong Zhang</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://perezpellitero.github.io/" target="_blank">Eduardo Pérez-Pellitero</a>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Huawei Noah's Ark London</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="assets/pdf/paper.pdf" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/hzVoynHCR-A?si=UCAHqdxUwp3hMIjQ" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://github.com"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://huggingface.co/charge-benchmark/Charge" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body has-text-centered">
+      <img src="assets/images/tease.png"
+                 class="centre-img"
+                 alt="Interpolate start reference image."/>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Charge</span> is a new dataset for dynamic novel view synthesis characterised by high-quality renderings and rich annotations
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present a new dynamic dataset for novel view synthesis, generated from a high-quality, animated film with stunning realism and intricate detail.
+            Our dataset captures a variety of dynamic scenes, complete with detailed textures, lighting, and motion,
+            making it ideal for training and evaluating cutting-edge 4D scene reconstruction and novel view generation models.
+          </p>
+          <p>
+            In addition to high-fidelity RGB images, we provide multiple complementary modalities, including depth, surface normals,
+            object segmentation and optical flow, enabling a deeper understanding of scene geometry and motion.
+            The dataset is organised into three distinct benchmarking scenarios: a dense multi-view camera setup, a sparse camera arrangement,
+            and monocular video sequences, enabling a wide range of experimentation and comparison across varying levels of data sparsity.
+            With its combination of visual richness, high-quality annotations, and diverse experimental setups,
+            this dataset offers a unique resource for pushing the boundaries of view synthesis and 3D vision.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/hzVoynHCR-A?si=Cvg5zkWxFrr_kPxH?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -20px; margin-bottom: 20px;">Modalities</h2>
+       
+        <div class="container" style="margin-top: 0;">
+          <div class="row g-2">
+            <div class="col-md-12 d-flex flex-column align-items-center">
+              <div class="video-container" style="width: 100%; position: relative; padding-top: 0%; margin-top: 0;">
+                <video class="video" id="xyalias1" loop="" playsinline="" autoplay="" muted="" src="assets/videos/stack.mp4" onplay="resizeAndPlay6(this)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
+              </div>
+              <canvas id="xyalias1Merge" class="videoMerge" style="display: block; width: 90%; margin-top: 5px; margin-left: auto; margin-right: auto;" width="6144" height="428"></canvas>
+              <h2 class="subtitle has-text-centered text-center mt-1" style="margin-top: 8px;">
+                Our dataset introduces a variety of ground truth modalities. The video above illustrates the segmentation, normals, RGB image, depth, dynamic masking, and optical flow. 
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -20px; margin-bottom: 20px;">Baselines</h2>
+        <p>
+          Below we show some qualitative results of state-of-the-art methods on our dataset. Image sequences are downscaled and video compressed for loading time.
+        </p>
+        <div class="content has-text-justified" style="margin-top: 15px;">
+          <h3 class="title is-4 has-text-centered" style="margin-bottom: 10px;">Dense</h3>
+        </div>
+
+        <div class="container">
+          <ul class="nav nav-tabs nav-fill nav-justified" id="dense-scenes" style="margin-bottom: 10px;">
+              <li class="nav-item">
+                <a class="nav-link active" id="dense-010_0050" onclick="objectSceneEventDense('010_0050')">010_0050</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="dense-020_0020" onclick="objectSceneEventDense('020_0020')">020_0020</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="dense-040_0040" onclick="objectSceneEventDense('040_0040')">040_0040</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="dense-050_0130" onclick="objectSceneEventDense('050_0130')">050_0130</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="dense-050_0160" onclick="objectSceneEventDense('050_0160')">050_0160</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="dense-060_0100" onclick="objectSceneEventDense('060_0100')">060_0100</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="dense-060_0130" onclick="objectSceneEventDense('060_0130')">060_0130</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="dense-070_0123" onclick="objectSceneEventDense('070_0123')">070_0123</a>
+              </li>
+          </ul>
+          <ul class="nav nav-tabs nav-fill nav-justified" id="dense-cams" style="margin-bottom: 10px;">
+            <li class="nav-item">
+              <a class="nav-link active" id="dense-DenseTest_01_01" onclick="objectSceneEventDenseCam('DenseTest_01_01')">DenseTest_01_01</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="dense-DenseTest_01_02" onclick="objectSceneEventDenseCam('DenseTest_01_02')">DenseTest_01_02</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="dense-DenseTest_02_01" onclick="objectSceneEventDenseCam('DenseTest_02_01')">DenseTest_02_01</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="dense-DenseTest_02_02" onclick="objectSceneEventDenseCam('DenseTest_02_02')">DenseTest_02_02</a>
+            </li>
+        </ul>
+          <div class="col-md-12 d-flex flex-column align-items-center">
+            <div class="video-container" style="width: 100%; position: relative; padding-top: 0%; margin-top: 0;">
+              <video class="video" id="xyaliasDense" loop="" playsinline="" autoplay="" muted="" src="assets/videos/dense/DenseTest_01_01/010_0050.webm" onplay="resizeAndPlay2(this)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
+            </div>
+            <canvas id="xyaliasDenseMerge" class="videoMerge" style="display: block; width: 90%; margin-top: 5px; margin-left: auto; margin-right: auto;" width="3072" height="428"></canvas>
+          </div>   
+        </div>
+
+        <div class="content has-text-justified" style="margin-top: 30px;">
+          <h3 class="title is-4 has-text-centered" style="margin-bottom: 10px;">Sparse</h3>
+        </div>
+
+        <div class="container">
+          <ul class="nav nav-tabs nav-fill nav-justified" id="sparse-scenes" style="margin-bottom: 10px;">
+              <li class="nav-item">
+                <a class="nav-link active" id="sparse-010_0050" onclick="objectSceneEventSparse('010_0050')">010_0050</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="sparse-020_0020" onclick="objectSceneEventSparse('020_0020')">020_0020</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="sparse-040_0040" onclick="objectSceneEventSparse('040_0040')">040_0040</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="sparse-050_0130" onclick="objectSceneEventSparse('050_0130')">050_0130</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="sparse-050_0160" onclick="objectSceneEventSparse('050_0160')">050_0160</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="sparse-060_0100" onclick="objectSceneEventSparse('060_0100')">060_0100</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="sparse-060_0130" onclick="objectSceneEventSparse('060_0130')">060_0130</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="sparse-070_0123" onclick="objectSceneEventSparse('070_0123')">070_0123</a>
+              </li>
+          </ul>
+          <ul class="nav nav-tabs nav-fill nav-justified" id="sparse-views" style="margin-bottom: 10px;">
+            <li class="nav-item">
+              <a class="nav-link active" id="sparse-3" onclick="objectSceneEventSparseViews('3')">3 views</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="sparse-6" onclick="objectSceneEventSparseViews('6')">6 views</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="sparse-9" onclick="objectSceneEventSparseViews('9')">9 views</a>
+            </li>
+          </ul>
+          <ul class="nav nav-tabs nav-fill nav-justified" id="sparse-cams" style="margin-bottom: 10px;">
+            <li class="nav-item">
+              <a class="nav-link active" id="sparse-SparseTest_00" onclick="objectSceneEventSparseCam('SparseTest_00')">SparseTest_00</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="sparse-SparseTest_01" onclick="objectSceneEventSparseCam('SparseTest_01')">SparseTest_01</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="sparse-SparseTest_02" onclick="objectSceneEventSparseCam('SparseTest_02')">SparseTest_02</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="sparse-SparseTest_03" onclick="objectSceneEventSparseCam('SparseTest_03')">SparseTest_03</a>
+            </li>
+          </ul>
+          <div class="col-md-12 d-flex flex-column align-items-center">
+            <div class="video-container" style="width: 100%; position: relative; padding-top: 0%; margin-top: 0;">
+              <video class="video" id="xyaliasSparse" loop="" playsinline="" autoplay="" muted="" src="assets/videos/sparse/3/SparseTest_00/010_0050.webm" onplay="resizeAndPlay2(this)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
+            </div>
+            <canvas id="xyaliasSparseMerge" class="videoMerge" style="display: block; width: 90%; margin-top: 5px; margin-left: auto; margin-right: auto;" width="3072" height="428"></canvas>
+          </div>   
+        </div>
+
+        <div class="content has-text-justified" style="margin-top: 30px;">
+          <h3 class="title is-4 has-text-centered" style="margin-bottom: 10px;">Mono</h3>
+        </div>
+
+        <div class="container">
+          <ul class="nav nav-tabs nav-fill nav-justified" id="mono-scenes" style="margin-bottom: 10px;">
+              <li class="nav-item">
+                <a class="nav-link active" id="mono-010_0050" onclick="objectSceneEventMono('010_0050')">010_0050</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="mono-020_0020" onclick="objectSceneEventMono('020_0020')">020_0020</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="mono-040_0040" onclick="objectSceneEventMono('040_0040')">040_0040</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="mono-050_0130" onclick="objectSceneEventMono('050_0130')">050_0130</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="mono-050_0160" onclick="objectSceneEventMono('050_0160')">050_0160</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="mono-060_0100" onclick="objectSceneEventMono('060_0100')">060_0100</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="mono-060_0130" onclick="objectSceneEventMono('060_0130')">060_0130</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="mono-070_0123" onclick="objectSceneEventMono('070_0123')">070_0123</a>
+              </li>
+          </ul>
+          <ul class="nav nav-tabs nav-fill nav-justified" id="mono-paths" style="margin-bottom: 10px;">
+            <li class="nav-item">
+              <a class="nav-link active" id="mono-MonoSplineFast" onclick="objectSceneEventMonoPaths('MonoSplineFast')">MonoSplineFast</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="mono-MonoSplineSlow" onclick="objectSceneEventMonoPaths('MonoSplineSlow')">MonoSplineSlow</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="mono-MonoRandomWalkFast" onclick="objectSceneEventMonoPaths('MonoRandomWalkFast')">MonoRandomWalkFast</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="mono-MonoRandomWalkSlow" onclick="objectSceneEventMonoPaths('MonoRandomWalkSlow')">MonoRandomWalkSlow</a>
+            </li>
+          </ul>
+          <ul class="nav nav-tabs nav-fill nav-justified" id="mono-cams" style="margin-bottom: 10px;">
+            <li class="nav-item">
+              <a class="nav-link active" id="mono-Left1x" onclick="objectSceneEventMonoCam('Left1x')">Left1x</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="mono-Right2x" onclick="objectSceneEventMonoCam('Right2x')">Right2x</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="mono-Orbital" onclick="objectSceneEventMonoCam('Orbital')">Orbital</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="mono-DenseTest_02_02" onclick="objectSceneEventMonoCam('DenseTest_02_02')">DenseTest_02_02</a>
+            </li>
+          </ul>
+          <div class="col-md-12 d-flex flex-column align-items-center">
+            <div class="video-container" style="width: 100%; position: relative; padding-top: 0%; margin-top: 0;">
+              <video class="video" id="xyaliasMono" loop="" playsinline="" autoplay="" muted="" src="assets/videos/mono/MonoSplineFast/Left1x/010_0050.webm" onplay="resizeAndPlay4(this)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
+            </div>
+            <canvas id="xyaliasMonoMerge" class="videoMerge" style="display: block; width: 90%; margin-top: 5px; margin-left: auto; margin-right: auto;" width="4096" height="428"></canvas>
+          </div>   
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{nazarczuk2024charge,
+  author    = {Nazarczuk, Michal and Tanay, Thomas and Zhang, Zhensong and Pérez-Pellitero, Eduardo},
+  title     = {Charge: A Comprehensive Benchmark and Dataset for Dynamic Novel View Synthesis},
+  journal   = {#TODO},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>
+
+<section class="section" id="License">
+  <div class="container is-max-desktop content">
+    <h2 class="title">License</h2>
+    <p>
+      <span class="dnerf">Charge</span> is created with the use of a movie from Blender Open Movies library offered under <a href="https://creativecommons.org/licenses/by/4.0/deed.en" target="_blank">CC BY 4.0</a>.
+      All creators of the movie can be found on <a href="https://studio.blender.org/projects/charge/pages/credits/" target="_blank">Credits page</a>.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+            This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a>. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
