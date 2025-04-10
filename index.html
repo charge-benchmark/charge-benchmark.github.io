@@ -99,12 +99,21 @@
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="assets/pdf/paper.pdf" target="_blank"
+                <a href="assets/pdf/paper_v2.pdf" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
                   <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="assets/pdf/paper_v2_lr.pdf" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper low res</span>
                 </a>
               </span>
               <!-- <span class="link-block">
@@ -214,7 +223,7 @@
           <div class="row g-2">
             <div class="col-md-12 d-flex flex-column align-items-center">
               <div class="video-container" style="width: 100%; position: relative; padding-top: 0%; margin-top: 0;">
-                <video class="video" id="xyalias1" loop="" playsinline="" autoplay="" muted="" src="assets/videos/stack.mp4" onplay="resizeAndPlay6(this)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
+                <video class="video" id="xyalias1" loop="" playsinline="" autoplay="" muted="" src="assets/videos/stack.mp4" onplay="resizeAndPlay(this, 6)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
               </div>
               <canvas id="xyalias1Merge" class="videoMerge" style="display: block; width: 90%; margin-top: 5px; margin-left: auto; margin-right: auto;" width="6144" height="428"></canvas>
               <h2 class="subtitle has-text-centered text-center mt-1" style="margin-top: 8px;">
@@ -284,7 +293,7 @@
         </ul>
           <div class="col-md-12 d-flex flex-column align-items-center">
             <div class="video-container" style="width: 100%; position: relative; padding-top: 0%; margin-top: 0;">
-              <video class="video" id="xyaliasDense" loop="" playsinline="" autoplay="" muted="" src="assets/videos/dense/DenseTest_01_01/010_0050.webm" onplay="resizeAndPlay2(this)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
+              <video class="video" id="xyaliasDense" loop="" playsinline="" autoplay="" muted="" src="assets/videos/dense/DenseTest_01_01/010_0050.webm" onplay="resizeAndPlay(this, 4)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
             </div>
             <canvas id="xyaliasDenseMerge" class="videoMerge" style="display: block; width: 90%; margin-top: 5px; margin-left: auto; margin-right: auto;" width="3072" height="428"></canvas>
           </div>   
@@ -348,9 +357,9 @@
           </ul>
           <div class="col-md-12 d-flex flex-column align-items-center">
             <div class="video-container" style="width: 100%; position: relative; padding-top: 0%; margin-top: 0;">
-              <video class="video" id="xyaliasSparse" loop="" playsinline="" autoplay="" muted="" src="assets/videos/sparse/3/SparseTest_00/010_0050.webm" onplay="resizeAndPlay2(this)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
+              <video class="video" id="xyaliasSparse" loop="" playsinline="" autoplay="" muted="" src="assets/videos/sparse/3/SparseTest_00/010_0050.webm" onplay="resizeAndPlay(this, 4)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
             </div>
-            <canvas id="xyaliasSparseMerge" class="videoMerge" style="display: block; width: 90%; margin-top: 5px; margin-left: auto; margin-right: auto;" width="3072" height="428"></canvas>
+            <canvas id="xyaliasSparseMerge" class="videoMerge" style="display: block; width: 90%; margin-top: 5px; margin-left: auto; margin-right: auto;" width="4096" height="428"></canvas>
           </div>   
         </div>
 
@@ -415,9 +424,9 @@
           </ul>
           <div class="col-md-12 d-flex flex-column align-items-center">
             <div class="video-container" style="width: 100%; position: relative; padding-top: 0%; margin-top: 0;">
-              <video class="video" id="xyaliasMono" loop="" playsinline="" autoplay="" muted="" src="assets/videos/mono/MonoSplineFast/Left1x/010_0050.webm" onplay="resizeAndPlay4(this)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
+              <video class="video" id="xyaliasMono" loop="" playsinline="" autoplay="" muted="" src="assets/videos/mono/MonoSplineFast/Left1x/010_0050.webm" onplay="resizeAndPlay(this, 5)" style="width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; object-fit: contain;"></video>
             </div>
-            <canvas id="xyaliasMonoMerge" class="videoMerge" style="display: block; width: 90%; margin-top: 5px; margin-left: auto; margin-right: auto;" width="4096" height="428"></canvas>
+            <canvas id="xyaliasMonoMerge" class="videoMerge" style="display: block; width: 90%; margin-top: 5px; margin-left: auto; margin-right: auto;" width="5120" height="428"></canvas>
           </div>   
         </div>
       </div>
